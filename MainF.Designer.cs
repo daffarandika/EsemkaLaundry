@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnEmployee = new System.Windows.Forms.Button();
-            this.btnCustomer = new System.Windows.Forms.Button();
+            this.btnService = new System.Windows.Forms.Button();
             this.btnPackage = new System.Windows.Forms.Button();
             this.btnTransaction = new System.Windows.Forms.Button();
             this.btnPrepaid = new System.Windows.Forms.Button();
@@ -51,14 +51,15 @@
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
-            // btnCustomer
+            // btnService
             // 
-            this.btnCustomer.Location = new System.Drawing.Point(12, 119);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(124, 23);
-            this.btnCustomer.TabIndex = 1;
-            this.btnCustomer.Text = "Manage Customer";
-            this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnService.Location = new System.Drawing.Point(12, 119);
+            this.btnService.Name = "btnService";
+            this.btnService.Size = new System.Drawing.Size(124, 23);
+            this.btnService.TabIndex = 1;
+            this.btnService.Text = "Manage Service";
+            this.btnService.UseVisualStyleBackColor = true;
+            this.btnService.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnPackage
             // 
@@ -68,6 +69,7 @@
             this.btnPackage.TabIndex = 2;
             this.btnPackage.Text = "Manage Package";
             this.btnPackage.UseVisualStyleBackColor = true;
+            this.btnPackage.Click += new System.EventHandler(this.btnPackage_Click);
             // 
             // btnTransaction
             // 
@@ -77,6 +79,7 @@
             this.btnTransaction.TabIndex = 3;
             this.btnTransaction.Text = "Transaction Deposit";
             this.btnTransaction.UseVisualStyleBackColor = true;
+            this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
             // btnPrepaid
             // 
@@ -86,6 +89,7 @@
             this.btnPrepaid.TabIndex = 4;
             this.btnPrepaid.Text = "Prepaid Package";
             this.btnPrepaid.UseVisualStyleBackColor = true;
+            this.btnPrepaid.Click += new System.EventHandler(this.btnPrepaid_Click);
             // 
             // btnViewTransaction
             // 
@@ -95,6 +99,7 @@
             this.btnViewTransaction.TabIndex = 5;
             this.btnViewTransaction.Text = "View Transaction";
             this.btnViewTransaction.UseVisualStyleBackColor = true;
+            this.btnViewTransaction.Click += new System.EventHandler(this.btnViewTransaction_Click);
             // 
             // button7
             // 
@@ -155,7 +160,7 @@
             this.Controls.Add(this.btnPrepaid);
             this.Controls.Add(this.btnTransaction);
             this.Controls.Add(this.btnPackage);
-            this.Controls.Add(this.btnCustomer);
+            this.Controls.Add(this.btnService);
             this.Controls.Add(this.btnEmployee);
             this.Name = "MainF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -169,7 +174,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnEmployee;
-        private System.Windows.Forms.Button btnCustomer;
+        private System.Windows.Forms.Button btnService;
         private System.Windows.Forms.Button btnPackage;
         private System.Windows.Forms.Button btnTransaction;
         private System.Windows.Forms.Button btnPrepaid;

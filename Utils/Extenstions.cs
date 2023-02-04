@@ -18,6 +18,7 @@ namespace Laundry.Utils
             dgv.SelectionMode= DataGridViewSelectionMode.FullRowSelect;
             dgv.ReadOnly = true;
             dgv.AllowUserToAddRows= false;
+            dgv.MultiSelect= false;
         }
         public static void Fill(this ComboBox cmb, string query, string valueMember, string displayMember)
         {

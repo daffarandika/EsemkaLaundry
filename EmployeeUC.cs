@@ -35,12 +35,13 @@ namespace Laundry
             };
             crudBTn = new Control[]
             {
-                btnInsert, btnDelete, btnUpdate
+                btnInsert, btnUpdate
             };
             FillDGV();
             FillCMB();
             crudDestroy();
             tbSalary.Maximum = int.MaxValue;
+            btnDelete.Enabled= false;
         }
 
         private void FillCMB()
@@ -61,6 +62,7 @@ namespace Laundry
         void reset()
         {
             Helper.Clear(inputFields);
+            FillDGV();
         }
 
         void crudSetup()
@@ -71,6 +73,7 @@ namespace Laundry
         }
         void crudDestroy()
         {
+            stateManager.SetState(CRUDStateManager.State.Default);
             Helper.Enable(crudBTn);
             Helper.Disable(inputFields);
             Helper.Disable(nonCrudBTn);
@@ -125,12 +128,24 @@ namespace Laundry
         private void btnDelete_Click(object sender, EventArgs e)
         {
             stateManager.SetState(CRUDStateManager.State.Delete);
-            crudSetup();
+            string id = tbId.Text;
+            if (Helper.AskForConfirmation() != DialogResult.Yes)
+            {
+                Helper.RunQuery("delete from employee where id = '" + id + "'");
+            }
+            reset();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string id = "";
+            if (
+                Guard.FailsAgainstNull(inputFieldsNoID) ||
+                Guard.FailsAgainstInvalidEmail(new Control[] { tbEmail }) ||
+                Guard.FailsAgainstInvalidPhoneNumber(new Control[] { tbPhone }) ||
+                Guard.FailsAgainstInvalidPassword(new Control[] { tbPassword })
+            ) return;
+
+            string id = tbId.Text;
             string query = "";
             string name = tbName.Text;
             string email = tbEmail.Text;
@@ -141,32 +156,51 @@ namespace Laundry
             string idJob = cmbJob.SelectedValue.ToString();
             string salary = tbSalary.Text;
             string phonenumber = tbPhone.Text;
+
             
-            if (password != cPassword)
-            {
-                Helper.ShowError(message: "Password and password confirmation does not match");
-                return;
-            }
             switch (stateManager.state)
             {
                 case CRUDStateManager.State.Insert:
-                    if (Guard.FailAgainstNull(inputFieldsNoID)) return;
+                    if (password != cPassword)
+                    {
+                        Helper.ShowError(message: "Password and password confirmation does not match");
+                        return;
+                    }
                     query = "insert into employee (name, email, password, address, dateofbirth, idJob, salary, phonenumber) values ('" + name + "', '" + email + "', '" + password + "', '" + address + "', '" + dateofbirth + "', '" + idJob + "', '" + salary + "', '" + phonenumber + "')";
-                    Helper.RunQuery(query);
                     reset();
                     crudDestroy();
                     break;
 
                 case CRUDStateManager.State.Update:
-                    if (Guard.FailAgainstNull(inputFields)) return;
-                    query = "insert";
+                    if (password != cPassword)
+                    {
+                        Helper.ShowError(message: "Password and password confirmation does not match");
+                        return;
+                    }
+                    query = "update employee set name = '"+name+"', email = '"+email+"', password = '"+password+"', address = '"+address+"' ,dateofbirth = '"+dateofbirth+"', idjob = '"+idJob+"', salary = '"+salary+"', phonenumber = '"+phonenumber+"' where id = '"+id+"'";
                     break;
-
-                case CRUDStateManager.State.Delete:
-                    query = "insert";
-                    break;
-
             }
+            Helper.RunQuery(query);
+            crudDestroy();
+        }
+
+        private void dgvEmp_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnDelete.Enabled = true;
+            DataGridViewRow row = dgvEmp.CurrentRow;
+            tbName.Text = row.Cells["name"].Value.ToString();
+            tbEmail.Text = row.Cells["email"].Value.ToString();
+            tbPhone.Text = row.Cells["phoneNumber"].Value.ToString();
+            tbAddress.Text = row.Cells["address"].Value.ToString();
+            tbPassword.Text = row.Cells["password"].Value.ToString();
+            tbSalary.Text = row.Cells["salary"].Value.ToString();
+            tbId.Text = row.Cells["id"].Value.ToString();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            reset();
+            crudDestroy();
         }
     }
 }

@@ -83,9 +83,9 @@ namespace Laundry.Utils
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        public static void ShowQuestion(string title = "Confirmation", string message = "Are you sure ?")
+        public static DialogResult AskForConfirmation(string title = "Confirmation", string message = "Are you sure ?")
         {
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
         public static void RunQuery(string query)
         {

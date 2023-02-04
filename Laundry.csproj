@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerUC.cs">
+    <Compile Include="ServiceUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomerUC.Designer.cs">
-      <DependentUpon>CustomerUC.cs</DependentUpon>
+    <Compile Include="ServiceUC.Designer.cs">
+      <DependentUpon>ServiceUC.cs</DependentUpon>
     </Compile>
     <Compile Include="EmployeeUC.cs">
       <SubType>UserControl</SubType>
@@ -101,6 +101,9 @@
     <Compile Include="ViewTransactionUC.Designer.cs">
       <DependentUpon>ViewTransactionUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ServiceUC.resx">
+      <DependentUpon>ServiceUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeUC.resx">
       <DependentUpon>EmployeeUC.cs</DependentUpon>
     </EmbeddedResource>

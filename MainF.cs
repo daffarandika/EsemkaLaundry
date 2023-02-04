@@ -38,5 +38,35 @@ namespace Laundry
             panel1.Controls.Clear();
             panel1.Controls.Add(new EmployeeUC());
         }
+
+        private void btnPrepaid_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new EmployeeUC());
+        }
+
+        private void btnTransaction_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new EmployeeUC());
+        }
+
+        private void btnPackage_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new PackageUC());
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new ServiceUC());
+        }
+
+        private void btnViewTransaction_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new EmployeeUC());
+        }
     }
 }

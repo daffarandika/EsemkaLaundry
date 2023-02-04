@@ -68,6 +68,7 @@
             this.dgvEmp.Name = "dgvEmp";
             this.dgvEmp.Size = new System.Drawing.Size(657, 215);
             this.dgvEmp.TabIndex = 0;
+            this.dgvEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmp_CellClick);
             // 
             // label1
             // 
@@ -306,6 +307,7 @@
             this.btnCancel.TabIndex = 28;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // EmployeeUC
             // 

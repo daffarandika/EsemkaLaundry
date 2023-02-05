@@ -101,6 +101,9 @@
     <Compile Include="ViewTransactionUC.Designer.cs">
       <DependentUpon>ViewTransactionUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PackageUC.resx">
+      <DependentUpon>PackageUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServiceUC.resx">
       <DependentUpon>ServiceUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +125,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TransactionUC.resx">
+      <DependentUpon>TransactionUC.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

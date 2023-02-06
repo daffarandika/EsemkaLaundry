@@ -27,7 +27,7 @@ namespace Laundry.Utils
             cmb.ValueMember= valueMember;
             cmb.DisplayMember= displayMember;
             cmb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmb.SelectedIndex = -1;
+            cmb.SelectedIndex = 0;
         }
         public static void ShowTinyError(this Control c, string message = "Invalid Input")
         {

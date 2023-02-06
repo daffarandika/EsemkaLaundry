@@ -16,5 +16,10 @@ namespace Laundry
         {
             InitializeComponent();
         }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

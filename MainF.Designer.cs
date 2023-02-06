@@ -132,7 +132,7 @@
             // lblHello
             // 
             this.lblHello.AutoSize = true;
-            this.lblHello.Location = new System.Drawing.Point(683, 17);
+            this.lblHello.Location = new System.Drawing.Point(579, 17);
             this.lblHello.Name = "lblHello";
             this.lblHello.Size = new System.Drawing.Size(35, 13);
             this.lblHello.TabIndex = 9;

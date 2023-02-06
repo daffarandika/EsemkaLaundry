@@ -20,7 +20,7 @@ namespace Laundry
             timer.Interval = 1000;
             timer.Tick += updateTime;
             timer.Start();
-            // lblHello.Text = $"Hello, {Vars.dtEmployee.Rows[0]["name"].ToString()}";
+            lblHello.Text = $"Hello, {Vars.dtEmployee.Rows[0]["name"]}";
         }
 
         private void updateTime(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace Laundry
         private void btnTransaction_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            panel1.Controls.Add(new EmployeeUC());
+            panel1.Controls.Add(new TransactionUC());
         }
 
         private void btnPackage_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace Laundry
         private void btnViewTransaction_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            panel1.Controls.Add(new EmployeeUC());
+            panel1.Controls.Add(new ViewTransactionUC());
         }
     }
 }

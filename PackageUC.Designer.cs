@@ -120,6 +120,7 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(186, 20);
             this.tbSearch.TabIndex = 73;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // tbPrice
             // 

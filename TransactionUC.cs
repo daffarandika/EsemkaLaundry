@@ -17,6 +17,8 @@ namespace Laundry
         DataTable dtTransaction = new DataTable();
         DataTable dtService = new DataTable();
         DataTable dtCustomer = new DataTable();
+        List<string> serviceIds = new List<string>();
+        Control[] inputField;
         int totalHours = 0;
         public TransactionUC()
         {
@@ -27,6 +29,10 @@ namespace Laundry
                 var btnCol = (DataGridViewButtonCell)dgvTransaction.Rows[i].Cells["action"];
                 btnCol.Value = "Add";
             }
+            inputField = new Control[]
+            {
+                tbPhone, tbPrice, tbTotal, cmbService
+            };
             dgvTransaction.AllowUserToAddRows= false;
         }
 
@@ -89,6 +95,7 @@ namespace Laundry
             }
             updateTotalPrice();
             updateTotalTime();
+            serviceIds.Add(cmbService.SelectedValue.ToString());
         }
 
         private void updateTotalTime()
@@ -117,47 +124,97 @@ namespace Laundry
             if (e.ColumnIndex == 5)
             {
                 dgvTransaction.Rows.RemoveAt(e.RowIndex); 
+                serviceIds.RemoveAt(e.RowIndex);
             }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string time = lblTime.Text;
-            int daysTextIndex = 0;
-            int eodi = 0; // end of days index
-            int sohi = 0; // start of hours index
-            for (int i = 0; i < time.Length; i++)
+            if (Guard.FailsAgainstNull(inputField))
             {
-                if (time[i] == 'D')
-                {
-                    daysTextIndex = i;
-                    break;
-                }
+                return;
             }
-            for (int i = 0; i < time.Length; i++)
+            try { 
+                string time = lblTime.Text;
+                int daysTextIndex = 0;
+                int eodi = 0; // end of days index
+                int sohi = 0; // start of hours index
+                for (int i = 0; i < time.Length; i++)
+                {
+                    if (time[i] == 'D')
+                    {
+                        daysTextIndex = i;
+                        break;
+                    }
+                }
+                for (int i = 0; i < time.Length; i++)
+                {
+                    if (time[i] == 's')
+                    {
+                        eodi = i;
+                        break;
+                    }
+                }
+                for (int i = 0; i < time.Length; i++)
+                {
+                    if (time[i] == 'H')
+                    {
+                        sohi = i;
+                        break;
+                    }
+                }
+                int days = Convert.ToInt32(time.Remove(daysTextIndex));
+                int hours = Convert.ToInt32(time.Substring(eodi + 1, (sohi - 1) - (eodi + 1)));
+                string completeestimationdatetime = (DateTime.Now.Add(new TimeSpan(days, hours, 0, 0)).ToString());
+                string idcustomer = dtCustomer.Rows[0]["id"].ToString();
+                string idemployee = Vars.dtEmployee.Rows[0]["id"].ToString();
+                string transactiondatetime = DateTime.Now.ToString();
+                string queryHeaderdeposit = "insert into headerdeposit (idcustomer, idemployee, transactiondatetime, completeestimationdatetime) values ('"+idcustomer+"', '"+idemployee+"', '"+transactiondatetime+"', '"+completeestimationdatetime+"')";
+                Helper.RunQuery(queryHeaderdeposit);
+                string iddeposit = Helper.GetDataTable("select max(id) as id from headerdeposit").Rows[0]["id"].ToString();
+                for (int i = 0; i < dgvTransaction.Rows.Count; i++)
+                {
+                    string idservice = serviceIds[i];
+                    string totalunit = dgvTransaction.Rows[i].Cells["totalUnit"].Value.ToString();
+                    string price = dgvTransaction.Rows[i].Cells["priceperunit"].Value.ToString();
+                    string queryPackage = "insert into package (idservice, totalunit, price) values ('" + idservice + "', '" + totalunit + "', '" + price + "')";
+                    Helper.RunQuery(queryPackage);
+                }
+                string idpackage = Helper.GetDataTable("select max(id) as id from package").Rows[0]["id"].ToString();
+                for (int i = 0; i < dgvTransaction.Rows.Count; i++)
+                { 
+                    string idservice = serviceIds[i];
+                    string totalunit = dgvTransaction.Rows[i].Cells["totalUnit"].Value.ToString();
+                    string price = dgvTransaction.Rows[i].Cells["priceperunit"].Value.ToString();
+                    string idprepaidpackage = "";
+                    if (dgvTransaction.Rows[i].Cells["prepaidpackage"].Value.ToString().Length >= 0)
+                    {
+                        string startDateTime = DateTime.Now.ToString();
+                        string completedDateTime = null;
+                        string queryPrepaidpackage = "insert into prepaidpackage (idcustomer, idpackage, price, startDateTime, completedDateTime) values ('" + idcustomer + "', '" + idpackage + "', '" + price + "', '" + startDateTime + "', '" + completedDateTime + "')";
+                        Helper.RunQuery(queryPrepaidpackage);
+                        idprepaidpackage = Helper.GetDataTable("select max(id) as id from prepaidpackage").Rows[0]["id"].ToString();
+                    }
+                    string priceunit = price;
+                    string completeddatetime = "";
+                    string queryDetailDeposit = "insert into detaildeposit (iddeposit, idservice, idprepaidpackage, priceunit, totalunit, completeddatetime) values ('" + iddeposit + "', '" + idservice + "', '" + idprepaidpackage + "', '" + priceunit + "', '" + totalunit + "', '" + completeddatetime + "')";
+                    Helper.RunQuery(queryDetailDeposit);
+                }
+                reset();
+                Helper.ShowInfoDialog(message: "Successfully added the transaction");
+            } catch (Exception ex)
             {
-                if (time[i] == 's')
-                {
-                    eodi = i;
-                    break;
-                }
+                MessageBox.Show(ex.StackTrace, ex.Message);
             }
-            for (int i = 0; i < time.Length; i++)
-            {
-                if (time[i] == 'H')
-                {
-                    sohi = i;
-                    break;
-                }
-            }
-            int days = Convert.ToInt32(time.Remove(daysTextIndex));
-            int hours = Convert.ToInt32(time.Substring(eodi + 1, (sohi - 1) - (eodi + 1)));
-            string completeestimationdatetime = (DateTime.Now.Add(new TimeSpan(days, hours, 0, 0)).ToString());
-            string idcustomer = dtCustomer.Rows[0]["id"].ToString();
-            string idemployee = Vars.dtEmployee.Rows[0]["id"].ToString();
-            string transactiondatetime = DateTime.Now.ToString();
-            string headerdepositQ = "insert into headerdeposit (idcustomer, idemployee, transactiondatetime, completeestimationdatetime) values ('"+idcustomer+"', '"+idemployee+"', '"+transactiondatetime+"', '"+completeestimationdatetime+"')";
-            MessageBox.Show(headerdepositQ);
+        }
+
+        void reset()
+        {
+            dgvTransaction.DataSource = null;
+            tbPhone.Text = string.Empty;
+            tbPrice.Text = string.Empty;
+            tbTotal.Value= 0;
+            cmbService.SelectedIndex = -1;
         }
     }
 }

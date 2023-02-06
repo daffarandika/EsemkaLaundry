@@ -42,7 +42,7 @@ namespace Laundry
         private void btnPrepaid_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            panel1.Controls.Add(new EmployeeUC());
+            panel1.Controls.Add(new PrepaidUC());
         }
 
         private void btnTransaction_Click(object sender, EventArgs e)

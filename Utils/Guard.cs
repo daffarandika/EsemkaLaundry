@@ -19,6 +19,7 @@ namespace Laundry.Utils
                     if (control.Text.Length == 0)
                     {
                         res = true;
+                        control.ShowTinyError();
                     }
                 }
                 if (control is ComboBox)
@@ -26,6 +27,7 @@ namespace Laundry.Utils
                     if ((control as ComboBox).SelectedIndex== -1)
                     {
                         res = true;
+                        control.ShowTinyError();
                     }
                 }
             }

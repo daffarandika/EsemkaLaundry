@@ -113,6 +113,9 @@
     <EmbeddedResource Include="PackageUC.resx">
       <DependentUpon>PackageUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrepaidUC.resx">
+      <DependentUpon>PrepaidUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServiceUC.resx">
       <DependentUpon>ServiceUC.cs</DependentUpon>
     </EmbeddedResource>

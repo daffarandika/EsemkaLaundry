@@ -63,6 +63,16 @@ namespace Laundry.Utils
             foreach (Control control in controls)
             {
                 control.Text = string.Empty;
+                if (control is ComboBox)
+                {
+                    try
+                    {
+                        ((ComboBox)control).SelectedIndex = -1;
+                    } catch
+                    {
+
+                    }
+                }
             }
         }
         public static void Enable(Control[] controls)

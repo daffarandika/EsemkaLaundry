@@ -140,6 +140,9 @@
     <EmbeddedResource Include="TransactionUC.resx">
       <DependentUpon>TransactionUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewTransactionUC.resx">
+      <DependentUpon>ViewTransactionUC.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

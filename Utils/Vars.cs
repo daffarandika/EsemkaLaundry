@@ -11,7 +11,6 @@ namespace Laundry.Utils
     internal class Vars
     {
         public static string connectionString = "Data Source=DESKTOP-GHNE639;Initial Catalog=EsemkaLaundryDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public static DataTable dtEmployee
-            = Helper.GetDataTable("select * from employee where id = 40");
+        public static DataTable dtEmployee;
     }
 }

@@ -109,6 +109,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Logout";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
@@ -164,7 +165,7 @@
             this.Controls.Add(this.btnEmployee);
             this.Name = "MainF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainF";
+            this.Text = "Esemka Laundry";
             this.Load += new System.EventHandler(this.MainF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

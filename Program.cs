@@ -16,7 +16,7 @@ namespace Laundry
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainF());
+            Application.Run(new Login());
         }
     }
 }

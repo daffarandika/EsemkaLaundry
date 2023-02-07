@@ -31,9 +31,18 @@ namespace Laundry
             if (Vars.dtEmployee.Rows.Count < 1)
             {
                 Helper.ShowInfoDialog("Invalid", "Please Try Again, Your Data is not Valid!");
+                return;
             }
+            Hide();
             MainF mainF = new MainF();
-            mainF.Show();
+            mainF.ShowDialog();
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbName.ResetText();
+            tbPassword.ResetText();
         }
     }
 }

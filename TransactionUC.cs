@@ -34,6 +34,7 @@ namespace Laundry
                 tbPhone, tbPrice, tbTotal, cmbService
             };
             dgvTransaction.AllowUserToAddRows= false;
+            tbTotal.Maximum = int.MaxValue;
         }
 
         void AddRow(string service, string prepaidpackage, string priceperunit, string totalunit, string subtotal)
@@ -137,8 +138,8 @@ namespace Laundry
             try { 
                 string time = lblTime.Text;
                 int daysTextIndex = 0;
-                int eodi = 0; // end of days index
-                int sohi = 0; // start of hours index
+                int endOfDaysIndex = 0; // end of days index
+                int startOfHoursIndex = 0; // start of hours index
                 for (int i = 0; i < time.Length; i++)
                 {
                     if (time[i] == 'D')
@@ -151,7 +152,7 @@ namespace Laundry
                 {
                     if (time[i] == 's')
                     {
-                        eodi = i;
+                        endOfDaysIndex = i;
                         break;
                     }
                 }
@@ -159,12 +160,12 @@ namespace Laundry
                 {
                     if (time[i] == 'H')
                     {
-                        sohi = i;
+                        startOfHoursIndex = i;
                         break;
                     }
                 }
                 int days = Convert.ToInt32(time.Remove(daysTextIndex));
-                int hours = Convert.ToInt32(time.Substring(eodi + 1, (sohi - 1) - (eodi + 1)));
+                int hours = Convert.ToInt32(time.Substring(endOfDaysIndex + 1, (startOfHoursIndex - 1) - (endOfDaysIndex + 1)));
                 string completeestimationdatetime = (DateTime.Now.Add(new TimeSpan(days, hours, 0, 0)).ToString());
                 string idcustomer = dtCustomer.Rows[0]["id"].ToString();
                 string idemployee = Vars.dtEmployee.Rows[0]["id"].ToString();
@@ -190,14 +191,13 @@ namespace Laundry
                     if (dgvTransaction.Rows[i].Cells["prepaidpackage"].Value.ToString().Length >= 0)
                     {
                         string startDateTime = DateTime.Now.ToString();
-                        string completedDateTime = null;
-                        string queryPrepaidpackage = "insert into prepaidpackage (idcustomer, idpackage, price, startDateTime, completedDateTime) values ('" + idcustomer + "', '" + idpackage + "', '" + price + "', '" + startDateTime + "', '" + completedDateTime + "')";
+                        string queryPrepaidpackage = "insert into prepaidpackage (idcustomer, idpackage, price, startDateTime) values ('" + idcustomer + "', '" + idpackage + "', '" + price + "', '" + startDateTime + "')";
                         Helper.RunQuery(queryPrepaidpackage);
                         idprepaidpackage = Helper.GetDataTable("select max(id) as id from prepaidpackage").Rows[0]["id"].ToString();
+                        Helper.RunQuery("insert into detaildeposit (iddeposit, idservice, idprepaidpackage, priceunit, totalunit) values ('" + iddeposit + "', '" + idservice + "', '" + idprepaidpackage + "', '" + price + "', '" + totalunit + "')"); 
                     }
                     string priceunit = price;
-                    string completeddatetime = "";
-                    string queryDetailDeposit = "insert into detaildeposit (iddeposit, idservice, idprepaidpackage, priceunit, totalunit, completeddatetime) values ('" + iddeposit + "', '" + idservice + "', '" + idprepaidpackage + "', '" + priceunit + "', '" + totalunit + "', '" + completeddatetime + "')";
+                    string queryDetailDeposit = "insert into detaildeposit (iddeposit, idservice, priceunit, totalunit) values ('" + iddeposit + "', '" + idservice + "', '" + priceunit + "', '" + totalunit + "')";
                     Helper.RunQuery(queryDetailDeposit);
                 }
                 reset();
@@ -210,11 +210,17 @@ namespace Laundry
 
         void reset()
         {
-            dgvTransaction.DataSource = null;
-            tbPhone.Text = string.Empty;
-            tbPrice.Text = string.Empty;
-            tbTotal.Value= 0;
-            cmbService.SelectedIndex = -1;
+            try
+            {
+                dgvTransaction.DataSource = null;
+                tbPhone.Text = string.Empty;
+                tbPrice.Text = string.Empty;
+                tbTotal.Value = 0;
+                cmbService.SelectedIndex = -1;
+            } catch (Exception ex)
+            {
+
+            }
         }
     }
 }

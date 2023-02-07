@@ -68,5 +68,12 @@ namespace Laundry
             panel1.Controls.Clear();
             panel1.Controls.Add(new ViewTransactionUC());
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new Login().ShowDialog();
+            Close();
+        }
     }
 }

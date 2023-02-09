@@ -92,7 +92,7 @@ namespace Laundry
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            crudDestroy();
         }
 
         private void PackageUC_Load(object sender, EventArgs e)
@@ -110,6 +110,7 @@ namespace Laundry
         {
             Helper.Disable(nonCrudButtons);
             Helper.Enable(crudButtons);
+            Helper.Disable(inputFields);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

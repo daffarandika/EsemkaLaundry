@@ -52,6 +52,11 @@ namespace Laundry
                 lblAddress.Text = "[Address]";
             }
             dtCustomer = dt;
+            if (tbPhone.Text.Length < 1)
+            {
+                lblName.Text = "[Name]";
+                lblAddress.Text = "[Address]";
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

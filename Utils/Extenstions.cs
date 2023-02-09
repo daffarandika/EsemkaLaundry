@@ -11,6 +11,7 @@ namespace Laundry.Utils
 {
     public static class Extenstions
     {
+        public static ErrorProvider ep = new ErrorProvider();
         public static void Fill(this DataGridView dgv, string query)
         {
             DataTable dt = Helper.GetDataTable(query);
@@ -27,12 +28,24 @@ namespace Laundry.Utils
             cmb.ValueMember= valueMember;
             cmb.DisplayMember= displayMember;
             cmb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmb.SelectedIndex = 0;
+            try
+            {
+                cmb.SelectedIndex = -1;
+            } catch
+            {
+
+            }
         }
         public static void ShowTinyError(this Control c, string message = "Invalid Input")
         {
-            ErrorProvider ep = new ErrorProvider();
             ep.SetError(c,message);
+        }
+        public static void ClearTinyError(this Control[] c)
+        {
+            foreach (Control control in c)
+            {
+                ep.SetError(control, "");
+            }
         }
     }
 }

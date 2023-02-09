@@ -47,7 +47,6 @@
             this.tbPhone = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbCPassword = new System.Windows.Forms.TextBox();
-            this.tbAddress = new System.Windows.Forms.RichTextBox();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.tbSalary = new System.Windows.Forms.NumericUpDown();
             this.cmbJob = new System.Windows.Forms.ComboBox();
@@ -57,6 +56,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tbAddress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSalary)).BeginInit();
             this.SuspendLayout();
@@ -137,7 +137,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 484);
+            this.label8.Location = new System.Drawing.Point(18, 494);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(66, 13);
             this.label8.TabIndex = 7;
@@ -184,64 +184,56 @@
             this.tbId.Location = new System.Drawing.Point(110, 288);
             this.tbId.Name = "tbId";
             this.tbId.Size = new System.Drawing.Size(186, 20);
-            this.tbId.TabIndex = 13;
+            this.tbId.TabIndex = 1;
             // 
             // tbName
             // 
             this.tbName.Location = new System.Drawing.Point(110, 318);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(186, 20);
-            this.tbName.TabIndex = 14;
+            this.tbName.TabIndex = 2;
             // 
             // tbEmail
             // 
             this.tbEmail.Location = new System.Drawing.Point(110, 347);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(186, 20);
-            this.tbEmail.TabIndex = 15;
+            this.tbEmail.TabIndex = 3;
             // 
             // tbPhone
             // 
             this.tbPhone.Location = new System.Drawing.Point(110, 377);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(186, 20);
-            this.tbPhone.TabIndex = 16;
+            this.tbPhone.TabIndex = 4;
             // 
             // tbPassword
             // 
             this.tbPassword.Location = new System.Drawing.Point(421, 347);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(186, 20);
-            this.tbPassword.TabIndex = 17;
+            this.tbPassword.TabIndex = 9;
             // 
             // tbCPassword
             // 
             this.tbCPassword.Location = new System.Drawing.Point(421, 377);
             this.tbCPassword.Name = "tbCPassword";
             this.tbCPassword.Size = new System.Drawing.Size(186, 20);
-            this.tbCPassword.TabIndex = 18;
-            // 
-            // tbAddress
-            // 
-            this.tbAddress.Location = new System.Drawing.Point(110, 411);
-            this.tbAddress.Name = "tbAddress";
-            this.tbAddress.Size = new System.Drawing.Size(186, 61);
-            this.tbAddress.TabIndex = 19;
-            this.tbAddress.Text = "";
+            this.tbCPassword.TabIndex = 10;
             // 
             // dtpDOB
             // 
-            this.dtpDOB.Location = new System.Drawing.Point(110, 484);
+            this.dtpDOB.Location = new System.Drawing.Point(110, 494);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(186, 20);
-            this.dtpDOB.TabIndex = 20;
+            this.dtpDOB.TabIndex = 6;
             // 
             // tbSalary
             // 
             this.tbSalary.Location = new System.Drawing.Point(421, 318);
             this.tbSalary.Name = "tbSalary";
             this.tbSalary.Size = new System.Drawing.Size(186, 20);
-            this.tbSalary.TabIndex = 21;
+            this.tbSalary.TabIndex = 8;
             // 
             // cmbJob
             // 
@@ -249,14 +241,14 @@
             this.cmbJob.Location = new System.Drawing.Point(421, 288);
             this.cmbJob.Name = "cmbJob";
             this.cmbJob.Size = new System.Drawing.Size(186, 21);
-            this.cmbJob.TabIndex = 22;
+            this.cmbJob.TabIndex = 7;
             // 
             // tbSearch
             // 
             this.tbSearch.Location = new System.Drawing.Point(441, 18);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(186, 20);
-            this.tbSearch.TabIndex = 23;
+            this.tbSearch.TabIndex = 0;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // btnInsert
@@ -264,7 +256,7 @@
             this.btnInsert.Location = new System.Drawing.Point(348, 438);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
-            this.btnInsert.TabIndex = 24;
+            this.btnInsert.TabIndex = 11;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
@@ -274,7 +266,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(450, 438);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 25;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -284,7 +276,7 @@
             this.btnDelete.Location = new System.Drawing.Point(552, 438);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 26;
+            this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -294,7 +286,7 @@
             this.btnSave.Location = new System.Drawing.Point(397, 476);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 27;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -304,15 +296,24 @@
             this.btnCancel.Location = new System.Drawing.Point(500, 476);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 28;
+            this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // tbAddress
+            // 
+            this.tbAddress.Location = new System.Drawing.Point(110, 411);
+            this.tbAddress.Multiline = true;
+            this.tbAddress.Name = "tbAddress";
+            this.tbAddress.Size = new System.Drawing.Size(186, 67);
+            this.tbAddress.TabIndex = 5;
             // 
             // EmployeeUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDelete);
@@ -322,7 +323,6 @@
             this.Controls.Add(this.cmbJob);
             this.Controls.Add(this.tbSalary);
             this.Controls.Add(this.dtpDOB);
-            this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.tbCPassword);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbPhone);
@@ -373,7 +373,6 @@
         private System.Windows.Forms.TextBox tbPhone;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.TextBox tbCPassword;
-        private System.Windows.Forms.RichTextBox tbAddress;
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.NumericUpDown tbSalary;
         private System.Windows.Forms.ComboBox cmbJob;
@@ -383,5 +382,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox tbAddress;
     }
 }

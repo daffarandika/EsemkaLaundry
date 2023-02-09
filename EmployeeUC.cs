@@ -77,6 +77,8 @@ namespace Laundry
             Helper.Enable(crudBTn);
             Helper.Disable(inputFields);
             Helper.Disable(nonCrudBTn);
+            reset();
+            FillDGV();
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
@@ -138,6 +140,7 @@ namespace Laundry
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            inputFields.ClearTinyError();
             if (
                 Guard.FailsAgainstNull(inputFieldsNoID) ||
                 Guard.FailsAgainstInvalidEmail(new Control[] { tbEmail }) ||
@@ -195,6 +198,8 @@ namespace Laundry
             tbPassword.Text = row.Cells["password"].Value.ToString();
             tbSalary.Text = row.Cells["salary"].Value.ToString();
             tbId.Text = row.Cells["id"].Value.ToString();
+            dtpDOB.Value = (DateTime)row.Cells["dateofbirth"].Value;
+            cmbJob.SelectedValue = row.Cells["idjob"].Value;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

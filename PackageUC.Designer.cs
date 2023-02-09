@@ -55,7 +55,7 @@
             this.btnCancel.Location = new System.Drawing.Point(502, 439);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 78;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -65,7 +65,7 @@
             this.btnSave.Location = new System.Drawing.Point(399, 439);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 77;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -75,7 +75,7 @@
             this.btnDelete.Location = new System.Drawing.Point(554, 388);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 76;
+            this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -85,7 +85,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(452, 388);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 75;
+            this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -95,7 +95,7 @@
             this.btnInsert.Location = new System.Drawing.Point(350, 388);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
-            this.btnInsert.TabIndex = 74;
+            this.btnInsert.TabIndex = 5;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
@@ -105,7 +105,7 @@
             this.tbSearch.Location = new System.Drawing.Point(441, 38);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(186, 20);
-            this.tbSearch.TabIndex = 73;
+            this.tbSearch.TabIndex = 0;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // tbTotalUnit
@@ -113,14 +113,14 @@
             this.tbTotalUnit.Location = new System.Drawing.Point(119, 426);
             this.tbTotalUnit.Name = "tbTotalUnit";
             this.tbTotalUnit.Size = new System.Drawing.Size(186, 20);
-            this.tbTotalUnit.TabIndex = 72;
+            this.tbTotalUnit.TabIndex = 3;
             // 
             // tbId
             // 
             this.tbId.Location = new System.Drawing.Point(119, 363);
             this.tbId.Name = "tbId";
             this.tbId.Size = new System.Drawing.Size(186, 20);
-            this.tbId.TabIndex = 69;
+            this.tbId.TabIndex = 1;
             // 
             // label11
             // 
@@ -191,7 +191,7 @@
             this.tbPrice.Location = new System.Drawing.Point(119, 456);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(186, 20);
-            this.tbPrice.TabIndex = 79;
+            this.tbPrice.TabIndex = 4;
             // 
             // cmbService
             // 
@@ -199,7 +199,7 @@
             this.cmbService.Location = new System.Drawing.Point(119, 393);
             this.cmbService.Name = "cmbService";
             this.cmbService.Size = new System.Drawing.Size(186, 21);
-            this.cmbService.TabIndex = 80;
+            this.cmbService.TabIndex = 2;
             // 
             // PackageUC
             // 

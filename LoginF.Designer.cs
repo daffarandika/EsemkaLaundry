@@ -41,7 +41,7 @@
             this.tbPassword.Location = new System.Drawing.Point(114, 114);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(262, 20);
-            this.tbPassword.TabIndex = 7;
+            this.tbPassword.TabIndex = 1;
             // 
             // label2
             // 
@@ -57,7 +57,8 @@
             this.tbName.Location = new System.Drawing.Point(114, 78);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(262, 20);
-            this.tbName.TabIndex = 5;
+            this.tbName.TabIndex = 0;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // label1
             // 
@@ -73,7 +74,7 @@
             this.button1.Location = new System.Drawing.Point(114, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -83,7 +84,7 @@
             this.button2.Location = new System.Drawing.Point(217, 161);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 24);
-            this.button2.TabIndex = 9;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Login";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);

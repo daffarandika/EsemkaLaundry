@@ -67,6 +67,11 @@ namespace Laundry
                 lblAddress.Text = "[Address]";
             }
             dtCustomer = dt;
+            if (tbPhone.Text.Length < 1)
+            {
+                lblName.Text = "[Name]";
+                lblAddress.Text = "[Address]";
+            }
         }
 
         private void TransactionUC_Load(object sender, EventArgs e)
@@ -83,6 +88,9 @@ namespace Laundry
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            (new Control[] { cmbService, tbPrice, tbTotal }).ClearTinyError();
+            if (Guard.FailsAgainstNull(new Control[] {cmbService, tbPrice, tbTotal})) return;
+
             string id = cmbService.SelectedValue.ToString(); 
             dtService = Helper.GetDataTable("select category.name as 'category', priceunit, service.name as 'service', estimationduration from service join unit on idUnit = unit.id join category on idCategory = category.id where service.id = '"+id+"'");
             string category = dtService.Rows[0]["category"].ToString();
@@ -131,6 +139,7 @@ namespace Laundry
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            inputField.ClearTinyError();
             if (Guard.FailsAgainstNull(inputField))
             {
                 return;

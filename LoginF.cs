@@ -13,10 +13,12 @@ namespace Laundry
 {
     public partial class Login : Form
     {
+        Control[] inputFields;
         public Login()
         {
             InitializeComponent();
             tbPassword.UseSystemPasswordChar= true;
+            inputFields = new Control[] { tbName, tbPassword };
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -25,6 +27,9 @@ namespace Laundry
 
         private void button2_Click(object sender, EventArgs e)
         {
+            inputFields.ClearTinyError();
+            if (Guard.FailsAgainstNull(inputFields)) return;
+
             string password = Helper.Hash(tbPassword.Text);
             string name = tbName.Text;
             Vars.dtEmployee = Helper.GetDataTable("select * from employee where name = '" + name + "' and password = '" + password + "'");
@@ -43,6 +48,10 @@ namespace Laundry
         {
             tbName.ResetText();
             tbPassword.ResetText();
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

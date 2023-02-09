@@ -30,6 +30,14 @@ namespace Laundry.Utils
                         control.ShowTinyError();
                     }
                 }
+                if (control is NumericUpDown)
+                {
+                    if ((control as NumericUpDown).Value == 0)
+                    {
+                        res = true;
+                        control.ShowTinyError();
+                    }
+                }
             }
             if (res) Helper.ShowError(message: "Inputs cannot be empty");
             return res;
@@ -57,8 +65,8 @@ namespace Laundry.Utils
             {
                 if (!regex.IsMatch(control.Text))
                 {
-                    control.ShowTinyError("Invalid Phone Number");
                     res = true;
+                    control.ShowTinyError("Invalid Phone Number");
                 }
             }
             return res;

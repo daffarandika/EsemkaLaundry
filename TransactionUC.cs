@@ -191,13 +191,13 @@ namespace Laundry
                     Helper.RunQuery(queryPackage);
                 }
                 string idpackage = Helper.GetDataTable("select max(id) as id from package").Rows[0]["id"].ToString();
-                for (int i = 0; i < dgvTransaction.Rows.Count; i++)
+                for (int i = 0; i < dgvTransaction.Rows.Count; i++) // foreach row
                 { 
                     string idservice = serviceIds[i];
                     string totalunit = dgvTransaction.Rows[i].Cells["totalUnit"].Value.ToString();
                     string price = dgvTransaction.Rows[i].Cells["priceperunit"].Value.ToString();
                     string idprepaidpackage = "";
-                    if (dgvTransaction.Rows[i].Cells["prepaidpackage"].Value.ToString().Length >= 0)
+                    if (dgvTransaction.Rows[i].Cells["prepaidPackage"].Value.ToString().Length > 0)
                     {
                         string startDateTime = DateTime.Now.ToString();
                         string queryPrepaidpackage = "insert into prepaidpackage (idcustomer, idpackage, price, startDateTime) values ('" + idcustomer + "', '" + idpackage + "', '" + price + "', '" + startDateTime + "')";

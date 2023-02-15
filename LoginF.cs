@@ -23,6 +23,7 @@ namespace Laundry
 
         private void Login_Load(object sender, EventArgs e)
         {
+            Helper.Prettify(new Control[] {button1});
         }
 
         private void button2_Click(object sender, EventArgs e)

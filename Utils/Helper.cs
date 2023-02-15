@@ -107,5 +107,28 @@ namespace Laundry.Utils
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public static void Prettify(Control[] controls)
+        {
+            foreach (Control c in controls)
+            {
+                if (c is Button)
+                {
+                    Button btn = (Button)c; 
+                    btn.BackColor = System.Drawing.Color.Orange;
+                    btn.FlatStyle= FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.MouseHover += (object sender, EventArgs e) =>
+                    {
+                        btn.BackColor= System.Drawing.Color.Red;
+                    };
+                    btn.MouseLeave += (object sender, EventArgs e) =>
+                    {
+                        btn.BackColor = System.Drawing.Color.Orange;
+                    };
+                }
+            }
+        }
+
     }
 }
